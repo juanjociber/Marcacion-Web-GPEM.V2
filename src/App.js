@@ -82,7 +82,7 @@ const App = () => {
       const formData = new FormData();
       formData.append('dni', nroDni);
       
-        const response = await fetch(`http://localhost/marcador/controller/BuscarPersonalApi.php`, {
+        const response = await fetch(`http://intranet.gpemsac.com/marcador/controller/BuscarPersonalApi.php`, {
         method: 'POST',
         body: formData       
       });
@@ -245,7 +245,7 @@ const App = () => {
     const formData = new FormData();
     formData.append('id', id);
 
-    const response = await fetch('http://localhost/marcador/controller/BuscarUltimaMarcacion.php', {
+    const response = await fetch('http://intranet.gpemsac.com/marcador/controller/BuscarUltimaMarcacion.php', {
       method: 'POST',
       body: formData
     });
@@ -288,7 +288,7 @@ const App = () => {
       console.log('Datos a enviar: ', { longitud, latitud, direccion, codigo, tipo, forma });
       console.log(formData);
 
-      const response = await fetch('http://localhost/marcador/controller/RegistrarMarcacion.php', {
+      const response = await fetch('http://intranet.gpemsac.com/marcador/controller/RegistrarMarcacion.php', {
         method: 'POST',
         body: formData
       });
