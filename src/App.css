@@ -1,0 +1,923 @@
+*,*:before, *:after{
+    box-sizing: inherit;
+    text-decoration: none;
+    list-style-type:none;
+}
+.fijo{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 10px 13px -7px #424242, 5px 5px 15px 5px rgba(35, 35, 35, 0);
+    z-index: 2;
+}
+.fijo h1{
+    padding-left: 0;
+}
+
+body{
+    font-size: 16px;
+    font-family: "Poppins","Montserrat","Roboto", sans-serif;
+    color: #7B809A;
+    position: relative;
+    background-color: #8989892b;
+    /* background-image: radial-gradient(circle at 48.28% 53.68%, #ffffff 0, #efeff0 50%, #c5c6d4 100%); */
+    user-select: none;
+}
+@media (min-width: 768px){
+    body{
+        font-size: 1em;
+    }
+}
+
+img{
+    max-width: 100%;
+}
+.contenedor{
+    width: min(98%, 120rem);
+    margin: 1rem auto;
+}
+@media (min-width: 768px){
+    .contenedor{
+        display: grid;
+        grid-template-columns: 70% 30%;
+    }
+}
+@media (min-width: 992px){
+    .contenedor{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1024px){
+    .contenedor{
+        width: min(90%, 120rem);
+    }
+}
+@media (min-width: 1200px){
+    .contenedor{
+        width: min(85%, 120rem);
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1441px){
+    .contenedor{
+        width: min(60%, 120rem);
+    }
+}
+
+.titulo-seccion{
+    font-size: 19px;
+    font-weight: 300;
+    padding: 10px;
+    text-transform: uppercase;
+    height: 1.4em;
+    color: #FFFFFF;
+    border-radius: 4px;
+    user-select: none;
+    background-color: #717073;
+    grid-column: 1 / 5;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.titulo-seccion svg{
+    font-size: 30px;
+}
+@media (min-width: 768px){
+    .titulo-seccion{
+        margin-top: 0;
+    }
+}
+
+h1{
+    /* background-color: #505CFD; */
+    background-image: radial-gradient(circle at 49.72% 49.98%, #5b44da 0, #4f5cfd 50%, #0046d2 100%);    font-size: 7.3vw;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 0;
+}
+@media(min-width:576px){
+    h1{
+        font-size: 2.1rem;
+    }
+}
+@media(min-width:768px){
+    h1{
+        font-size: 2.2rem;
+        grid-row: 1 / 2;
+        grid-column: 1 / 3;
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+/* .inactivo{
+    display: none;
+} */
+
+/*  =====================================================================
+    Estilos sección DNI y botones para asistencia-refrigerio
+    =====================================================================
+*/
+.seccion-dni{
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.contenedor-input{
+    display: flex;
+    flex-direction: column;
+}
+.contenedor-input label{
+    margin-bottom: 5px;
+    color: #eb9985;
+    font-weight: 800;
+}
+.contenedor-input input{
+    margin-bottom: 10px;
+    border: 0.5px solid #919da7c4;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 17px;
+    outline: unset;
+    color: #7B809A;
+}
+.grupo-botones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.grupo-botones button{
+    padding: 18px 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media(min-width:576px){
+    .grupo-botones{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .grupo-botones button{
+        padding: 15px 10px;
+    }
+}
+
+@media(min-width:768px){
+    .grupo-botones button{
+        justify-content: center;
+     }
+     .box-dni{
+        grid-column: 2 / 3;
+        margin-bottom: 15px;
+     }
+}
+
+@media(min-width:992px){
+     .box-dni{
+        grid-column: 4 / 5;
+        margin-bottom: 0;
+     }
+}
+@media(min-width:1200px){
+    .box-dni{
+      grid-row: 1 / 2;
+      grid-column: 5 / 7;
+    }
+}
+.boton-asistencia,
+.boton-refrigerio{
+    box-shadow: inset -8px -5px 10px -5px rgb(105, 105, 105);
+    color: #FFFFFF;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1em;
+}
+.boton-asistencia{
+    background-color: #505CFD;
+    transition: transform 0.3s ease-in-out;
+}
+.boton-asistencia:hover{
+    background-color: #5b65ff;   
+}
+.boton-asistencia:active{
+    transform: scale(0.9);   
+}
+.boton-refrigerio{
+    background-color: #e39000;
+    transition: transform 0.3s ease-in-out;
+}
+.boton-refrigerio:hover{
+    background-color: #d88c08;
+}
+.boton-refrigerio:active{
+    transform: scale(0.9);   
+}
+#btnAsistencia,
+#btnRefrigerio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#btnAsistencia svg,
+#btnRefrigerio svg{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 10px;
+}
+
+@media(min-width:768px){
+    .seccion-dni{
+        grid-column: 2 / 3;
+        margin-bottom: 0;
+    }
+    .contenedor-input{
+        justify-content: center;
+        align-items: center;
+    }
+    .contenedor-input input{
+        width: 80%;
+    }
+    .contenedor-input label{
+        display: block;
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .grupo-botones{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media(min-width:992px){
+    .seccion-dni{
+        grid-column: 4 / 5;
+    }
+    .boton-asistencia,.boton-refrigerio{
+        width: 80%;
+    }
+    .contenedor-input label{
+        padding-left: 20px;
+    }
+    #btnAsistencia svg,
+    #btnRefrigerio svg{
+        width: 50px;
+        margin-right: 0;
+    }
+    .contenedor-input input{
+        margin-bottom: 2rem;
+    }
+}
+@media(min-width:1200px){
+    .seccion-dni{
+        grid-column: 5 / 7;
+    }
+    .boton-asistencia,.boton-refrigerio{
+        width: 60%;
+    }
+    .contenedor-input label{
+        padding-left: 40px;
+    }
+    #btnAsistencia svg,
+    #btnRefrigerio svg{
+        width: 50px;
+    }
+}
+@media(min-width:1280px){
+    .contenedor-input label{
+        padding-left: 50px;
+    }
+    #btnAsistencia svg,
+    #btnRefrigerio svg{
+        width: 30px;
+        height: auto;
+    }
+}
+@media(min-width:1400px){
+    .contenedor-input label{
+        padding-left: 50px;
+    }
+    .contenedor-input input{
+        margin-bottom: 3rem;
+    }
+}
+@media(min-width:1441px){
+    .contenedor-input label{
+        padding-left: 33px;
+    }
+}
+@media(min-width:1490px){
+    .contenedor-input label{
+        padding-left: 38px;
+    }
+}
+@media(min-width:1730px){
+    .contenedor-input label{
+        padding-left: 48px;
+    }
+}
+@media(min-width:1730px){
+    .contenedor-input label{
+        padding-left: 52px;
+    }
+}
+
+/*  ================================================
+    Estilos sección información del usuario
+    ================================================
+*/
+.seccion-informacion{
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.contenedor-foto{
+    display: none;
+}
+.dato{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.dato label{
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+    font-size: 17px;
+    color: #505CFD;
+    font-weight: 300;
+
+}
+.dato input{
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 10px;
+    outline: unset;
+    color: #7B809A;  
+    border: 0.5px solid #7b809a8a;
+    border-radius: 4px;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .seccion-informacion{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 15px;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+    .box-usuario{
+        grid-row: 1 / 2;
+        margin-right: 15px;
+    }
+    .seccion-informacion .titulo-seccion{
+        grid-column: 1 / 3;
+    }
+    .contenedor-foto{
+        display: initial;
+        display: flex;
+    }
+    .contenedor-foto img{
+        border: 1px solid rgb(175, 175, 175);
+        width: 100%;
+    }
+    .contenedor-datos{
+        display: grid;
+    }
+    .dato{
+        display: grid;
+        grid-template-columns: 35% 65%;
+        align-items: center;
+    }
+    .dato label{
+        font-size: 16px;
+    }
+    .dato input{
+        display: initial;
+        font-size: 16px;
+        margin-bottom: 0;
+        font-weight: 700;
+    }
+}
+
+@media(min-width:992px){
+    .seccion-informacion{
+        grid-column: 1 / 4;
+        grid-template-columns: 1fr 2.4fr;
+    }
+    .box-usuario{
+        grid-column: 1 / 4;
+    }
+    .dato label{
+        font-size: 17px;
+    }
+    .dato input{
+        font-size: 17px;
+    }
+}
+@media (min-width: 1200px) {
+    .seccion-informacion{
+        font-size: 16px;
+        grid-column: 1 / 5;
+        grid-template-columns: 1.1fr 2fr; 
+    }
+    .box-usuario{
+        grid-column: 1 / 5;
+    }    
+}
+@media (min-width: 1400px){
+    .seccion-informacion{
+        grid-template-columns: 1.5fr 2fr;
+    }
+}
+
+/*  ================================================
+    Estilos sección registros de actividades
+    ================================================
+*/
+@media(min-width:768px){
+    .box-registro{
+        margin-right: 15px;
+    }
+}
+
+@media(min-width:992px){
+    .box-registro{
+        grid-column: 1 / 3;
+        margin-top: 20px;    
+    }
+}
+@media(min-width:1200px){
+    .box-registro{
+        grid-row: 2 / 3;
+        grid-column: 1 / 5;
+    }
+}
+
+.seccion-registro{
+    border-radius: 4px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.contenedor-fecha-horario{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.contenedor-fecha-horario p,
+.contenedor-fecha-horario input{
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    color:#7B809A;
+    margin-bottom: 1rem;
+}
+.contenedor-fecha-horario p{
+    font-weight: 800;
+    margin: 0;
+    color: #505CFD;
+    font-weight: 300;
+    font-size: 17px;
+}
+.contenedor-fecha-horario p:nth-child(3),
+.contenedor-fecha-horario input:nth-child(4){
+    margin-bottom: 0;
+}
+.contenedor-fecha-horario input{
+    margin-left: 10px;
+}
+.grupo-botones-registro{
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.boton-registro{
+    border: 1px solid #8a8a8a;
+    font-size: 0.9em;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 15px 0;
+    width: 100px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.boton-ingreso-labores,
+.boton-salida-labores{
+    background-color: #4489E4;
+    box-shadow: 0 4px #3e7dcf;
+    color: #FFFFFF;
+}
+.boton-ingreso-refrigerio,
+.boton-salida-refrigerio{
+    background-color: #EDC755;
+    box-shadow: 0 4px #d9b64c;
+    color: #FFFFFF;
+}
+.etiqueta-fecha,
+.etiqueta-horario{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(min-width:576px){
+    .contenedor-fecha-horario{
+        grid-template-columns: 15% 35% 15% 35%;
+    }
+}
+@media(min-width:768px){
+    .contenedor-fecha-horario p,
+    .contenedor-fecha-horario input{
+        margin-bottom: 0;
+    }
+}
+@media(min-width:992px){
+    .contenedor-fecha-horario{
+        grid-template-columns: 12% 38% 12% 38%;
+    }
+    .contenedor-fecha-horario p,
+    .contenedor-fecha-horario input{
+        font-size: 17px;
+    }
+}
+@media(min-width:1024px){
+    .contenedor-fecha-horario{
+        grid-template-columns: 15% 35% 15% 35%;
+    }
+}
+@media (min-width: 1441px){
+    .contenedor-fecha-horario{
+        grid-template-columns: 15% 35% 15% 35%;
+    }
+}
+
+/*  ==============================
+    Estilos de sección hora-fecha 
+    ==============================
+*/
+.seccion-hora-fecha{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.seccion-hora-fecha time{
+    padding: 10px;
+    font-size: 18px;
+}
+.seccion-hora-fecha time:first-child{
+    font-size: 25px;
+    font-weight: 800;
+    color: #505CFD;
+}
+#fechaActual{
+    color: #505CFD;
+}
+
+@media(min-width:768px){
+    .seccion-registro{
+        margin-bottom: 0;
+    }
+    .grupo-botones-registro{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .boton-registro{
+        padding: 15px 10px;
+        width: 100px;
+        margin-right: 8px;
+    }
+    .boton-registro:last-child{
+      margin-right: 0;
+    }
+    .seccion-hora-fecha{
+        display: grid;
+        place-content: center;
+        border-radius: 4px;
+        background-color: #505CFD;
+        padding: 0;
+    }
+    .seccion-hora-fecha time:first-child{
+        color: #FFFFFF;
+        font-size: 20px;
+    }
+    #fechaActual{
+        color: #FFFFFF;
+        font-size: 17px;
+    }
+}
+@media(min-width:992px){
+    .seccion-hora-fecha{
+        grid-row: 2 / 3;
+        grid-column: 4 / 5;
+        margin-top: 20px;
+    }
+    .seccion-registro{
+        grid-column: 1 / 4;
+    }
+}
+@media(min-width:1024px){
+    .seccion-registro{
+        grid-column: 1 / 4;
+    }
+}
+@media(min-width:1200px){
+    .seccion-registro{
+        grid-column: 1 / 5;
+    }
+    .boton-registro{
+        padding: 15px 10px;
+        width: 110px;
+    }
+    .seccion-hora-fecha{
+        grid-column: 5 / 7;
+        grid-row: 2 / 3;
+    }
+}
+
+/*  ================================================
+    Estilos de seccion para botones ingresar y sair
+    ================================================
+*/
+/* Estilos para el modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Desplazamiento en caso de desbordamiento */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5)); /* Fondo oscuro degradado */
+    justify-content: center;
+    align-items: center;
+    display: flex; /* Centrar el contenido */
+}
+/* Contenido del modal */
+.modal-contenido {
+    /* display: none; */
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+/* Botón de cerrar */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Estilos de los botones (ejemplo, puedes personalizarlos) */
+.boton-ingreso, .boton-salida {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boton-ingreso {
+    background-color: #4CAF50; /* Color de fondo del botón de ingreso */
+    box-shadow: 0 4px #439d46;
+    transition: transform 0.3s ease-in-out;
+    color: white;
+}
+.boton-ingreso:hover{
+    background-color: #3b863d;   
+}
+.boton-ingreso:active{
+    transform: scale(0.9);   
+}
+.boton-salida {
+    background-color: #f44336; /* Color de fondo del botón de salida */
+    box-shadow: 0 4px #e33f33;
+    transition: transform 0.3s ease-in-out;
+    color: white;
+}
+.boton-salida:hover{
+    background-color: #d73d32;
+}
+.boton-salida:active{
+    transform: scale(0.9);   
+}
+.modificador-botones{
+    margin-top: 0;
+    display: initial;
+}
+.modificador-botones button{
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+@media(min-width:768px){
+    .modal-contenido{
+        padding: 30px;
+        width: 100%;
+    } 
+}
+
+/*  ================================================
+    Estilos de seccion GPS
+    ================================================
+*/
+.seccion-gps{
+    border-radius: 4px;
+    /* margin-bottom: 30px; */
+    background-color: #FFFFFF;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.titulo-gps{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 800;
+    font-size: 17px;
+    display: flex;
+    font-weight: 300;
+    background-color: #505CFD;
+    color: #FFFFFF;
+    width: 30%;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.dato-gps{
+    display: block;
+    text-align: justify;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 5px 2px;
+}
+
+@media(min-width:768px){
+    .seccion-gps{
+        grid-row: 3 / 4;
+        grid-column: 1 / 3;
+    }
+    .box-gps{
+        grid-row: 3 / 4;
+        grid-column: 1 / 3;
+        margin-top: 20px;   
+    }
+    .info-gps{
+        display: grid;
+        grid-template-columns: 1.2fr 6fr;
+        margin-bottom: 10px;
+    }
+    .titulo-gps{
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+        color: #505CFD;
+        font-weight: 500;
+        background: none;
+    }
+    .dato-gps{
+        display: block;
+        margin-bottom: 0;
+    }
+    .puntos{
+        margin-right: 10px;
+    }
+}
+@media(min-width:992px){
+    .seccion-gps{
+        grid-column: 1 / 5;
+    }
+    .info-gps{
+        grid-template-columns: 1fr 3fr;
+    }
+    .box-gps{
+        grid-column: 1 / 5;
+    }
+}
+@media(min-width:1024px){
+    .seccion-gps{
+        margin-bottom: 0;
+    }
+    .info-gps{
+        display: initial;
+        display: grid;
+        grid-template-columns: 1.5fr 4fr;
+    }
+}
+@media(min-width:1200px){
+    .seccion-gps{
+        grid-column: 1 / 7;
+    }
+    .info-gps{
+        grid-template-columns: 1.2fr 4fr;
+    }
+    .titulo-gps{
+        /* width: 25%; */
+        margin-bottom: 5px;
+    }
+    .box-gps{
+      grid-column: 1 / 7;
+    }
+}
+@media(min-width:1441px){
+    .info-gps{
+        grid-template-columns: 1.7fr 4fr;
+    }
+}
+
+/*  ================================================
+    Estilos de seccion del mapa
+    ================================================
+*/
+.seccion-mapa{
+    display: none;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    /* box-shadow:1px 4px 6px 1px rgb(216 214 214), 1px 2px 4px 1px rgb(212 210 210); */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#mapa-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: none;
+}
+#mapa {
+    height: 100%;
+    width: 100%;
+}
+iframe{
+    width: 100%;
+}
+
+@media(min-width:992px){
+    .seccion-gps{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 20px;
+    }
+    .titulo-seccion{
+        grid-column: 1 / 5;
+    }
+    .contenedor-gps{
+        grid-column: 1 / 3;
+    }
+    #mapa-container {
+        display: block;
+        grid-column: 3 / 5;
+    }   
+}
+@media(min-width:1024px){
+    .seccion-mapa{
+        display:inherit;
+        grid-column: 3 / 5;
+        position: relative; 
+    }
+}
+
+footer{
+    text-align: center;
+    margin-top: 0;
+}
