@@ -109,7 +109,8 @@ const App = () => {
           datos.data.marcacion.refrigerio1 !== null,
           datos.data.marcacion.refrigerio2 !== null
         ];
-        setControlBotones(botones);
+        handleSetArray(botones);
+        //setControlBotones(botones);
         console.log('MOSTRANDO BOTONES',botones);
       };
 
@@ -500,9 +501,9 @@ const App = () => {
       <footer>
         <p>
           Desarrollado por{' '}
-          <a href="#" rel="noopener noreferrer">
+          <small rel="noopener noreferrer">
             GPEM S.A.C
-          </a>{' '}
+          </small>{' '}
           &copy; 2024
         </p>
       </footer>
