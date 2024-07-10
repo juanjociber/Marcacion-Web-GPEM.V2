@@ -268,9 +268,14 @@ const App = () => {
 
   const { asistencia1, asistencia2, refrigerio1, refrigerio2, tecnicosino, fecha, turno, programacion1 } = objetoNuevo || {};
 
-  console.log(a1,a2,r1,r2);
+  /** INICIO */
+  const removeInactiveClass = (id) => {
+    document.querySelector(id).classList.remove('inactivo'); 
+  }
+  /** FIN */
   
   const handleModalButtonClick = async (event,forma) => {
+    const buttonId = event.target.id;
     try {
       const formData = new FormData();
       const latitud = document.querySelector('#latitud').textContent;
@@ -305,14 +310,6 @@ const App = () => {
       console.warn('Respuesta del servidor registro marcacion : ', datos);
       setIsVisible(false);
 
-    
-      if (controlBotones[0] && a1 !== null) {
-        handleSetArray([true, false, false, false]);
-      }
-    
-      // if (controlBotones[0] && a1 !== null && controlBotones[2] && r1 !== null) {
-      //   handleSetArray([true, true, false, false]);
-      // }
       await searchUltimaMaracion(codigo);
     
       Swal.fire({
@@ -322,7 +319,32 @@ const App = () => {
         timer: 3000
       });
 
-
+      /** INICIO */
+      switch (buttonId) {
+        case 'modalBtnIngresoLabores':
+            // AGREGAR LÓGICA DE NEGOCIO
+            if(a1!==null)
+            removeInactiveClass("#btnIngresoLabores");
+            break;
+        case 'modalBtnSalidaLabores':
+            // AGREGAR LÓGICA DE NEGOCIO
+            if(a2!==null)
+            removeInactiveClass("#btnSalidaLabores");
+            break;
+        case 'modalBtnIngresoRefrigerio':
+            // AGREGAR LÓGICA DE NEGOCIO
+            if(r1!==null)
+            removeInactiveClass("#btnIngresoRefrigerio");
+            break;
+        case 'modalBtnSalidaRefrigerio':
+            // AGREGAR LÓGICA DE NEGOCIO
+            if(r2!==null);
+            removeInactiveClass("#btnSalidaRefrigerio");
+            break;
+        default:
+            return; // SALIR
+      }
+      /**  FIN */
 
     } 
     catch (error) {
