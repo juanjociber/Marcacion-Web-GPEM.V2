@@ -8,12 +8,15 @@
     width: 100%;
     top: 0;
     left: 0;
-    box-shadow: 0px 10px 13px -7px #424242, 5px 5px 15px 5px rgba(35, 35, 35, 0);
+    /* box-shadow: 0px 10px 13px -7px #424242, 5px 5px 15px 5px rgba(35, 35, 35, 0); */
     z-index: 2;
 }
-.fijo h1{
-    padding-left: 0;
+.fijo.header{
+    border: 1px solid red;
 }
+
+
+
 
 body{
     font-size: 16px;

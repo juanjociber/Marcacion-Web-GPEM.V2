@@ -33,7 +33,12 @@ function Gps() {
             </iframe>
         `);
     } catch (error) {
-        console.error('Error al obtener la dirección:', error);
+      Swal.fire({
+        title : 'Aviso',
+        text  : 'Error al obtener la dirección.',
+        icon  : 'error',
+        timer : '3000'
+      });
     }
   }
 
@@ -52,7 +57,7 @@ function Gps() {
             await obtenerDireccion(latitud, longitud, setDireccion, setMapa);
 
             // VERIFICACIÓN DE COORDENADAS
-            console.log(`Latitud: ${latitud}, Longitud: ${longitud}`);
+            //console.log(`Latitud: ${latitud}, Longitud: ${longitud}`);
         } catch (error) {
             // MANEJADOR DE ERRORES
             switch (error.code) {

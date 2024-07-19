@@ -8,7 +8,8 @@ const DataUsuario = ({ usuario }) => {
       <h2 className="titulo-seccion">Información del usuario<AiOutlineUser /></h2>      
       <div className="seccion-informacion">
         <div className="contenedor-foto">
-        <img src={`http://intranet.gpemsac.com/gpemsac/intranet/modulos/descargas/descargar-foto.php?idfoto=${usuario?.personal?.id}`} alt="Foto del usuario" />
+        {/* <img src={`https://intranet.gpemsac.com/gpemsac/intranet/modulos/descargas/DescargarFoto.php?img=${usuario?.personal?.id}`} alt="Foto del usuario" /> */}
+        <img src={`http://192.168.40.70/gpemsac/intranet/modulos/descargas/DescargarFoto.php?img=${usuario?.personal?.id}`} alt="Foto del usuario" />
         </div>
         <div className="contenedor-datos">
           <article className="dato">

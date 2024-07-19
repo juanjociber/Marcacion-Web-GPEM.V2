@@ -15,7 +15,6 @@ function Boton({ texto, esBotonAsistencia, manejarClic, id , btnAsistencia }){
             id          = { id }
             className   = { esBotonAsistencia ? 'boton-asistencia' : 'boton-refrigerio' }
             onClick     = { manejarClic }
-            // disabled    = { !btnAsistencia }
             >
             <Icono />     { texto } 
         </button>

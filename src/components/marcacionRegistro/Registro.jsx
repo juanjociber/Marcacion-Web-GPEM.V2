@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import BotonIngreso from './BotonIngreso';
 import BotonSalida from './BotonSalida';
 import { AiOutlineFieldTime } from "react-icons/ai";
 
-const Registro = ({ entradaFecha, entradaHorario, controlBotones, handleIngresoLaboresClick,handleIngresoRefrigerioClick}) => {
+const Registro = ({ entradaFecha, entradaHorario, controlBotones}) => {
 
   return (
     <div className='box-registro'>

@@ -82,7 +82,8 @@ const App = () => {
       const formData = new FormData();
       formData.append('dni', nroDni);
       
-        const response = await fetch(`http://intranet.gpemsac.com/marcador/controller/BuscarPersonalApi.php`, {
+        const response = await fetch(`http://192.168.40.70/marcador/controller/BuscarPersonalApi.php`, {
+        // const response = await fetch(`https://intranet.gpemsac.com/marcador/controller/BuscarPersonalApi.php`, {
         method: 'POST',
         body: formData       
       });
@@ -91,7 +92,7 @@ const App = () => {
         throw new Error(response.status + ' ' + response.statusText);
       }
       const datos = await response.json();
-      console.log('MATRIZ DE DATOS:',{datos});
+      //console.log('MATRIZ DE DATOS:',{datos});
       setObjetoNuevo(datos.data.programacion);
       if (!datos.res) {
         throw new Error(datos.msg);
@@ -110,57 +111,9 @@ const App = () => {
           datos.data.marcacion.refrigerio2 !== null
         ];
         setControlBotones(botones);
-        console.log('MOSTRANDO BOTONES',botones);
+        //console.log('MOSTRANDO BOTONES',botones);
       };
 
-      const horaActual = new Date(datos.hora);
-      const horaProgramada = new Date(datos.data.programacion.programacion1);
-      const horaRefrigerio1 = new Date(datos.data.programacion.refrigerio1);
-
-      if (datos.data.programacion.tecnicosino === 1) {
-        console.warn('marcación iniciada');
-          const diferenciaMinutos = (horaActual - horaRefrigerio1) / (1000 * 60);
-          const redondeoDiferenciaMinutos = Math.round(diferenciaMinutos); 
-            console.log('DIFERENCIA MINUTOS',redondeoDiferenciaMinutos);
-          // Verificar si han pasado al menos 45 minutos
-          if (diferenciaMinutos < 45) {
-              //const horaPermitida = datos.data.programacion.Refrigerio1;
-              const horaPermitida = new Date(datos.data.programacion.refrigerio1); // Creas una nueva instancia de Date
-              // Sumas 45 minutos a la hora actual
-              horaPermitida.setMinutes(horaPermitida.getMinutes() + 45);
-           
-              Swal.fire({
-                title: 'Información de Marcación',
-                html: `Por favor, espere un tiempo adecuado antes de marcar su regreso de refrigerio. <br><strong>Hora sugerida : ${horaPermitida.toLocaleTimeString()} Hrs.</strong>`,
-                icon: 'info',
-                timer: 6000
-              });
-              setUsuario(datos.data);
-              mostrarMarcaciones();
-              return false;
-          }
-        setEntradaFecha(fecha);
-        setEntradaHorario(turno);
-        mostrarMarcaciones();          
-      } 
-      else {
-        console.warn('marcación nueva');
-        const diferenciaMinutos = (horaActual - horaProgramada) / (1000 * 60);
-        if ( diferenciaMinutos < -5 ) {
-          const horas = new Date(datos.data.programacion.programacion1).toTimeString().split(' ')[0];
-          Swal.fire({
-            title: 'Información de Marcación',
-            html: `Por favor, espere un tiempo adecuado antes de marcar su ingreso. Le recuerdo que su hora programada para hoy : ${new Date().toLocaleDateString()} es a la(s) ${horas} Hrs.`,
-            icon: 'info',
-            timer: 6000
-          });
-          setUsuario(datos.data);
-          mostrarMarcaciones();
-          return false;
-        }
-        setEntradaFecha(fecha);
-        setEntradaHorario(turno);
-      }
       setEntradaFecha(fecha);
       setEntradaHorario(turno);
       mostrarMarcaciones();        
@@ -174,10 +127,9 @@ const App = () => {
         timer: 3000
       });
 
-      console.log(ex.message);
- 
+      //console.log(ex.message);
       setLoading(false);
-      console.log('Finalizando petición');
+      //console.log('Finalizando petición');
       setUsuario(null);
     } 
     finally {
@@ -198,8 +150,6 @@ const App = () => {
         });
         setUsuario('');
         setControlBotones(arrayBotones);
-        document.querySelector('#btnAsistencia').removeAttribute('disabled','disabled');
-        document.querySelector('#btnRefrigerio').removeAttribute('disabled','disabled');
         inputRef.current.focus();
       } else {
         handleDataSubmit(nroDni);
@@ -245,7 +195,8 @@ const App = () => {
     const formData = new FormData();
     formData.append('id', id);
 
-    const response = await fetch('http://intranet.gpemsac.com/marcador/controller/BuscarUltimaMarcacion.php', {
+    // const response = await fetch('https://intranet.gpemsac.com/marcador/controller/BuscarUltimaMarcacion.php', {
+    const response = await fetch('http://192.168.40.70/marcador/controller/BuscarUltimaMarcacion.php', {
       method: 'POST',
       body: formData
     });
@@ -256,19 +207,16 @@ const App = () => {
     if (!datos.res) {
       throw new Error(datos.msg);
     }
-    console.log('Respuesta del servidor: ', datos.data);
+    //console.log('Respuesta del servidor: ', datos.data);
     setObjetoActualizado(datos.data);
 
   };
 
-  console.log('OBJETO ACTUALIZADO', objetoActualizado);
-
+  //console.log('OBJETO ACTUALIZADO', objetoActualizado);
   //Desestructurando objeto nuevo 
   const {asistencia1:a1,asistencia2:a2,refrigerio1:r1,refrigerio2:r2 } = objetoActualizado || {}
 
   const { asistencia1, asistencia2, refrigerio1, refrigerio2, tecnicosino, fecha, turno, programacion1 } = objetoNuevo || {};
-
-  console.log(a1,a2,r1,r2);
   
   const handleModalButtonClick = async (event,forma) => {
     try {
@@ -285,10 +233,11 @@ const App = () => {
       formData.append('tipo', tipo);
       formData.append('forma',forma)
      
-      console.log('Datos a enviar: ', { longitud, latitud, direccion, codigo, tipo, forma });
-      console.log(formData);
+      //console.log('Datos a enviar: ', { longitud, latitud, direccion, codigo, tipo, forma });
+      //console.log(formData);
 
-      const response = await fetch('http://intranet.gpemsac.com/marcador/controller/RegistrarMarcacion.php', {
+      // const response = await fetch('https://intranet.gpemsac.com/marcador/controller/RegistrarMarcacion.php', {
+      const response = await fetch('http://192.168.40.70/marcador/controller/RegistrarMarcacion.php', {
         method: 'POST',
         body: formData
       });
@@ -297,22 +246,11 @@ const App = () => {
       }
       const datos = await response.json();
 
-      console.log('SALVAME',datos);
-
       if (!datos.res) {
         throw new Error(datos.msg);
       }
-      console.warn('Respuesta del servidor registro marcacion : ', datos);
+      //console.warn('Respuesta del servidor registro marcacion : ', datos);
       setIsVisible(false);
-
-    
-      if (controlBotones[0] && a1 !== null) {
-        handleSetArray([true, false, false, false]);
-      }
-    
-      // if (controlBotones[0] && a1 !== null && controlBotones[2] && r1 !== null) {
-      //   handleSetArray([true, true, false, false]);
-      // }
       await searchUltimaMaracion(codigo);
     
       Swal.fire({
@@ -321,9 +259,6 @@ const App = () => {
         icon: 'success',
         timer: 3000
       });
-
-
-
     } 
     catch (error) {
       Swal.fire({
@@ -332,7 +267,7 @@ const App = () => {
         icon: 'error',
         timer: 3000
       });
-      console.log(error.message);
+      //console.log(error.message);
     } 
     finally {
       handleClose();
@@ -357,27 +292,18 @@ const App = () => {
         toggleButtons('.boton-ingreso-lab', '.boton-salida-lab', true);
         toggleButtons('.boton-ingreso-ref', '.boton-salida-ref', false);
 
-        const mIngresoLabores = document.querySelector('#modalBtnIngresoLabores');         
-        const mSalidaLabores = document.querySelector('#modalBtnSalidaLabores');         
-        if(asistencia1 === null){
-          mSalidaLabores.setAttribute('disabled','disabled');
-        }
-        if(asistencia1 != null && asistencia2 === null ){
-          mSalidaLabores.removeAttribute('disabled','disabled');
-          mIngresoLabores.setAttribute('disabled','disabled');
-        }
-
         const horaActual = new Date();
         const programacion = new Date(programacion1);
         if(tecnicosino === 0 || tecnicosino === 2){
-          console.log('marcación nueva');
+          //console.log('marcación nueva');
           const diferenciaMinutos = (horaActual - programacion) / (1000 * 60);
   
           if ( diferenciaMinutos < -5 ) {
             const horas = new Date(programacion1).toTimeString().split(' ')[0];
             Swal.fire({
               title: 'Información de Marcación',
-              html: `Por favor, espere un tiempo adecuado antes de marcar su ingreso. Le recuerdo que su hora programada para hoy : ${new Date().toLocaleDateString()} es a la(s) ${horas} Hrs.`,
+              //html: `Por favor, espere un tiempo adecuado antes de marcar su ingreso. Le recuerdo que su hora programada para hoy : ${new Date().toLocaleDateString()} es a la(s) ${horas} Hrs.`,
+              html:`Aún no puede registrar el ingreso de asistencia`,
               icon: 'info',
               timer: 6000
             });
@@ -393,17 +319,10 @@ const App = () => {
     if (buttonType === 'refrigerio') {
         toggleButtons('.boton-ingreso-ref', '.boton-salida-ref', true);
         toggleButtons('.boton-ingreso-lab', '.boton-salida-lab', false);
-        const mSalidaRefrigerio = document.querySelector('#modalBtnSalidaRefrigerio');
-        const mIngresoRefrigerio = document.querySelector('#modalBtnIngresoRefrigerio');
-        const btnRefrigerio = document.querySelector('#btnRefrigerio');
         if(refrigerio1 === null){
-          mSalidaRefrigerio.setAttribute('disabled','disabled');
 
         }
         if(refrigerio1 !=null && refrigerio2 === null){
-          mIngresoRefrigerio.setAttribute('disabled','disabled');
-          btnRefrigerio.removeAttribute('disabled','disabled');
-          mSalidaRefrigerio.removeAttribute('disabled','disabled');
         }
 
         const fechaActual = document.querySelector('#entrada-fecha').value = fecha;
@@ -415,7 +334,7 @@ const App = () => {
           console.log('marcación iniciada');
             const diferenciaMinutos = (horaActual - horaRefrigerio1) / (1000 * 60);
             const redondeoDiferenciaMinutos = Math.round(diferenciaMinutos); 
-              console.log('DIFERENCIA MINUTOS',redondeoDiferenciaMinutos);
+              //console.log('DIFERENCIA MINUTOS',redondeoDiferenciaMinutos);
             // Verificar si han pasado al menos 45 minutos
             if (diferenciaMinutos < 45) {
                 //const horaPermitida = datos.data.programacion.Refrigerio1;
@@ -445,7 +364,9 @@ const App = () => {
 
   return (
     <div>
-      <h1 id='header'>Control de marcaciones</h1>
+      <div id='header'>
+        <h1>Control de marcaciones</h1>
+      </div>
       <div id='mostrar'></div>
       <div className="contenedor">
         {loading && <FullScreenSpinner />}

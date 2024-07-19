@@ -28,7 +28,6 @@ const Dni = ({ inputRef, handleKeyDown, nroDni, handleChange, handleButtonClick,
             esBotonAsistencia = { true }
             manejarClic       = { () => handleButtonClick('asistencia') }
             objetoNuevo       = {objetoNuevo}
-            // disabled          = { !botonAsistencia }
           />
           <Boton
             id                = 'btnRefrigerio'
