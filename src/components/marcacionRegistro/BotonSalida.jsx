@@ -4,7 +4,7 @@ function BotonSalida({ texto, esBotonSalida, id }){
     return(
         <button
         id        = { id }
-        className = { esBotonSalida ? 'boton-registro boton-salida-refrigerio' : 'boton-registro boton-salida-labores' } 
+        className = { esBotonSalida ? 'boton-registro boton-salida-refrigerio inactivo' : 'boton-registro boton-salida-labores inactivo' } 
         >
         { texto }
     </button>

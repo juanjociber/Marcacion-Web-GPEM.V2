@@ -111,7 +111,7 @@ const App = () => {
           datos.data.marcacion.refrigerio2 !== null
         ];
         setControlBotones(botones);
-        //console.log('MOSTRANDO BOTONES',botones);
+        console.log('MOSTRANDO BOTONES',botones);
       };
 
       setEntradaFecha(fecha);
@@ -217,8 +217,11 @@ const App = () => {
   const {asistencia1:a1,asistencia2:a2,refrigerio1:r1,refrigerio2:r2 } = objetoActualizado || {}
 
   const { asistencia1, asistencia2, refrigerio1, refrigerio2, tecnicosino, fecha, turno, programacion1 } = objetoNuevo || {};
+
+  console.log(a1,a2,r1,r2);
   
   const handleModalButtonClick = async (event,forma) => {
+    const buttonId = event.target.id;
     try {
       const formData = new FormData();
       const latitud = document.querySelector('#latitud').textContent;
@@ -251,6 +254,15 @@ const App = () => {
       }
       //console.warn('Respuesta del servidor registro marcacion : ', datos);
       setIsVisible(false);
+
+    
+      if (controlBotones[0] && a1 !== null) {
+        handleSetArray([true, false, false, false]);
+      }
+    
+      // if (controlBotones[0] && a1 !== null && controlBotones[2] && r1 !== null) {
+      //   handleSetArray([true, true, false, false]);
+      // }
       await searchUltimaMaracion(codigo);
     
       Swal.fire({
@@ -259,6 +271,9 @@ const App = () => {
         icon: 'success',
         timer: 3000
       });
+
+
+
     } 
     catch (error) {
       Swal.fire({
@@ -399,9 +414,9 @@ const App = () => {
       <footer>
         <p>
           Desarrollado por{' '}
-          <a href="#" rel="noopener noreferrer">
+          <small rel="noopener noreferrer">
             GPEM S.A.C
-          </a>{' '}
+          </small>{' '}
           &copy; 2024
         </p>
       </footer>
